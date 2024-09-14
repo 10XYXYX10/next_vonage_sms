@@ -1,0 +1,20 @@
+//npx prisma migrate reset
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  hashedPassword         String
+  phoneNumber            String   @unique
+  verifiedPhoneNumber    Boolean
+  authenticationPassword Int //ログイン時の認証パスワード
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
