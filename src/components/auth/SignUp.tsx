@@ -44,7 +44,7 @@ export default function SignUp() {
                                 {state.valueError.name && <span className='text-red-500 text-xs italic'>{state.valueError.name}</span>}
                             </div>
                             <div className="mb-4">
-                                <label className={`${labelClassVal}`}>携帯電話番号<em>*</em></label>
+                                <label className={`${labelClassVal}`}>070,080,090で始まる、日本の携帯電話番号<em>*</em></label>
                                 <span className='text-xs text-gray-500'>11桁の携帯電話番号を入力して下さい</span>
                                 <input
                                     name='phoneNumber'
@@ -57,7 +57,7 @@ export default function SignUp() {
                             </div>
                             <div className="mb-6">
                                 <label className={`${labelClassVal}`}>パスワード<em>*</em></label>
-                                <span className='text-xs text-gray-500'>5文字以上の半角or全角の英数字を入力して下さい</span>
+                                <span className='text-xs text-gray-500'>5文字以上の半角の英数字を入力して下さい</span>
                                 <input
                                     name='password'
                                     type='password'
