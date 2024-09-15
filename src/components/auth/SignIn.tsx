@@ -22,7 +22,7 @@ export default function SignIn() {
     return (<>
         <div className="flex items-center justify-center mt-5">
             <div className="flex flex-col items-center justify-center w-full max-w-md">
-                {state.error && <AlertError errMessage={state.error}/>}
+                {state.error && <AlertError errMessage={state.error} reloadBtFlag={false}/>}
                 {!state.phoneNumber
                     ?(        
                         <form 
