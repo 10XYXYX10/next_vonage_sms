@@ -9,7 +9,7 @@ const AuthUser = () => {
     return (
         <div className='h-screen bg-gray-200'>
             {signUpFlag ? (<>
-                <button 
+                <button
                     onClick={()=>setSignUpFlag(false)}
                     className='mt-5 ml-5 px-2 py-1 text-white text-sm border border-blue-600 bg-blue-500 hover:bg-blue-400 rounded-sm'
                 >
@@ -17,7 +17,7 @@ const AuthUser = () => {
                 </button>
                 <SignUp/>
             </>) : (<>
-                <button 
+                <button
                     onClick={()=>setSignUpFlag(true)}
                     className='mt-5 ml-5 px-2 py-1 text-white text-sm border border-blue-600 bg-blue-500 hover:bg-blue-400 rounded-sm'
                 >

@@ -6,9 +6,7 @@ const jwtKeyFromEnv = process.env.jwtHashKey as string;
 
 //認証パスワード：6桁のランダムな数値
 export const generateRandomNumber6 = ():number => {
-    const min = Math.pow(10, 5); // 6桁の最小値 (100000)
-    const max = Math.pow(10, 6) - 1; // 6桁の最大値 (999999)
-    return Math.floor(Math.random() * (max - min + 1)) + min;    
+    return Math.floor(Math.random() * 900000) + 100000;   
 }
 
 export const jwtAccessTokenEncode = async({
@@ -16,7 +14,7 @@ export const jwtAccessTokenEncode = async({
     objectData
 }:{
     jwtKey:string;
-    objectData:{id:number,name:string};
+    objectData:AuthUser;
 }):Promise<{
     result:boolean;
     messag:string;

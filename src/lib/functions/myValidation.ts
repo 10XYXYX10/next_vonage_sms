@@ -24,7 +24,7 @@ export const validationForMail = (str:string): {result:boolean, message:string} 
 //パスワードのバリデーション
 export const validationForPassword = (str:string): {result:boolean, message:string} => {
     //長さ5～50の範囲
-    if(str.length<4 || str.length>50)return {result:false, message:'5～50字以内の半角の英数字を入力して下さい'};
+    if(str.length<5 || str.length>50)return {result:false, message:'5～50字以内の半角の英数字を入力して下さい'};
     //email形式
     const passwordRegex = /^[A-Za-z0-9]+$/;
     const result = passwordRegex.test(str);
@@ -38,8 +38,8 @@ export const validationForAuthenticationPassword = (str:string): {result:boolean
     //6桁
     if(str.length!==6)return {result:false, message:'6桁の半角数字を入力して下さい'};
     //半角数字
-    const temporaryPasswordRegex = /^[0-9]+$/;
-    const result = temporaryPasswordRegex.test(str);
+    const passwordRegex = /^[0-9]+$/;
+    const result = passwordRegex.test(str);
     if(!result)return {result:false, message:'半角数字で入力して下さい'};
     // 成功!!
     return {result:true,message:'success'}
@@ -53,7 +53,7 @@ export const validationForPhoneNumber = (str:string): {result:boolean, message:s
     const japanesePhoneNumberRegex = /^0[7-9]0\d{8}$/;
     const result = japanesePhoneNumberRegex.test(str);
     if(!result)return {result:false, message:'070,080,090のいずれかで始まる11桁の半角数字を入力して下さい'};
-    // 冒頭3字以降を、4桁の2つのブロックに分け、共に同じ数字の連続の場合はfalse
+    // 冒頭3字以降を、4桁の2つのブロックに分け、それぞれ同じ数字の連続となっている場合は、false
     const block1 = str.slice(3, 7);
     const block2 = str.slice(7, 11);
     const repeatedNumberRegex = /(\d)\1{3}/;
