@@ -50,7 +50,7 @@ export default function SignUp() {
                                     name='phoneNumber'
                                     type='text'
                                     required={true}
-                                    placeholder="09011112222"
+                                    placeholder="090xxxxxxxx"
                                     className={`${state.valueError.phoneNumber&&'border-red-500'} ${inputClassVal}`}
                                 />
                                 {state.valueError.phoneNumber && <span className='text-red-500 text-xs italic'>{state.valueError.phoneNumber}</span>}

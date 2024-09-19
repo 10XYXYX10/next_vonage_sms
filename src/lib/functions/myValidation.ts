@@ -49,17 +49,20 @@ export const validationForAuthenticationPassword = (str:string): {result:boolean
 export const validationForPhoneNumber = (str:string): {result:boolean, message:string} => {
     //11桁
     if(str.length!==11)return {result:false, message:'11桁の半角数字を入力して下さい'};
+
     //半角数字
     const japanesePhoneNumberRegex = /^0[7-9]0\d{8}$/;
     const result = japanesePhoneNumberRegex.test(str);
     if(!result)return {result:false, message:'070,080,090のいずれかで始まる11桁の半角数字を入力して下さい'};
+
     // 冒頭3字以降を、4桁の2つのブロックに分け、それぞれ同じ数字の連続となっている場合は、false
     const block1 = str.slice(3, 7);
     const block2 = str.slice(7, 11);
     const repeatedNumberRegex = /(\d)\1{3}/;
     if (repeatedNumberRegex.test(block1) && repeatedNumberRegex.test(block2)) {
-        return { result: false, message: '同じ数字が4回連続している部分があります' };
+        return { result: false, message: '同じ数字が4回連続している部分が2箇所あります' };
     }
+    
     // 連番のチェック
     const checkBlock = str.slice(3, 11);
     if(

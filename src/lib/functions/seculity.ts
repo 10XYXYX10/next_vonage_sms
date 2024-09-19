@@ -148,7 +148,7 @@ export const saveAccessTokenInCookies = async({
         cookies().set({
             name: 'accessToken',
             value: token,
-            httpOnly: true, //クライアントサイドからの操作を防ぐため、JavaScriptからのアクセスを不可に
+            httpOnly: true, //クライアントサイドのJavaScriptでの操作を不可に
             sameSite: 'strict', //今回は、front,back共にNext.jsで作成しているので、cookieが同一サイト内のリクエストにのみ送信されるように設定
             secure: true, //セキュリティを強化のため、HTTPS接続でのみクッキーを送信
         });

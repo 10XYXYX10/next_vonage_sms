@@ -10,15 +10,6 @@ import { cookies } from "next/headers";
 //新規User作成
 export const signUp = async (state: SignUpFormState, formData: FormData) => {
     try{
-        state = { 
-            error:'',
-            valueError:{
-                name:'',
-                phoneNumber:'',
-                password:'',
-            },
-            phoneNumber:'',
-        };
         //////////
         //■[ formDataから値を取得 ]
         //・name
@@ -40,17 +31,31 @@ export const signUp = async (state: SignUpFormState, formData: FormData) => {
         //■[ validation ]
         //・name
         let result = validationForWord(name);
-        if(!result.result)state.valueError.name=result.message;
+        if(!result.result){
+            state.valueError.name=result.message;
+        }else if(state.valueError.name){
+            state.valueError.name='';
+        }
         //・phoneNumber
         result = validationForPhoneNumber(phoneNumber);
-        if(!result.result)state.valueError.phoneNumber=result.message;
+        if(!result.result){
+            state.valueError.phoneNumber=result.message;
+        }else if(state.valueError.phoneNumber){
+            state.valueError.phoneNumber='';
+        }
         //・password
         result = validationForPassword(password);
-        if(!result.result)state.valueError.password=result.message;
+        if(!result.result){
+            state.valueError.password=result.message;
+        }else if(state.valueError.password){
+            state.valueError.password='';
+        }
         //＊
         if(state.valueError.name || state.valueError.phoneNumber || state.valueError.password){
             state.error = 'Bad request error.';
             return state;
+        }else if(state.error){
+            state.error='';
         }
 
         //////////
@@ -110,21 +115,12 @@ export const signUp = async (state: SignUpFormState, formData: FormData) => {
         state.error = err instanceof Error ?  err.message : `Internal Server Error.`;
         return state;
     }
-    // redirect('/');
 };
 
 
 //ログイン
 export const signIn = async (state: SignInFormState, formData: FormData) => {
     try{
-        state = { 
-            error:'',
-            valueError:{
-                phoneNumber:'',
-                password:'',
-            },
-            phoneNumber:'',
-        };
         //////////
         //■[ formDataから値を取得 ]
         //・phoneNumber
@@ -143,14 +139,24 @@ export const signIn = async (state: SignInFormState, formData: FormData) => {
         //■[ validation ]
         //・phoneNumber
         let result = validationForPhoneNumber(phoneNumber);
-        if(!result.result)state.valueError.phoneNumber=result.message;
+        if(!result.result){
+            state.valueError.phoneNumber=result.message;
+        }else if(state.valueError.phoneNumber){
+            state.valueError.phoneNumber='';
+        }
         //・password
         result = validationForPassword(password);
-        if(!result.result)state.valueError.password=result.message;
+        if(!result.result){
+            state.valueError.password=result.message;
+        }else if(state.valueError.password){
+            state.valueError.password='';
+        }
         //＊
         if(state.valueError.phoneNumber || state.valueError.password){
             state.error = 'Bad request error.'
             return state;
+        }else if(state.error){
+            state.error='';
         }
 
         //////////
@@ -232,14 +238,24 @@ export const smsAuth = async (
         //■[ validation ]
         //・phoneNumber
         let result = validationForPhoneNumber(phoneNumber);
-        if(!result.result)state.valueError.phoneNumber=result.message;
+        if(!result.result){
+            state.valueError.phoneNumber=result.message;
+        }else if(state.valueError.phoneNumber){
+            state.valueError.phoneNumber='';
+        }
         //・authenticationPassword
         result = validationForAuthenticationPassword(authenticationPassword);
-        if(!result.result)state.valueError.authenticationPassword=result.message;
+        if(!result.result){
+            state.valueError.authenticationPassword=result.message;
+        }else if(state.valueError.authenticationPassword){
+            state.valueError.authenticationPassword='';
+        }
         //＊
         if(state.valueError.phoneNumber || state.valueError.authenticationPassword){
             state.error = 'Bad request error.'
             return state;
+        }else if(state.error){
+            state.error='';
         }
 
         //////////
