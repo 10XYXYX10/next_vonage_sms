@@ -14,8 +14,7 @@ const MailAuth = ({
     typeValue: 'SignUp'|'SignIn',
 }) => {
     const smsAuthWithTypeValue = smsAuth.bind(null, typeValue);
-    const initialState:SmsAuthFormState = { 
-        result:false,
+    const initialState:SmsAuthFormState = {
         error:'',
         valueError:{
             phoneNumber:'',

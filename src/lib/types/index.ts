@@ -23,7 +23,6 @@ export interface SignInFormState {
 }
 
 export interface SmsAuthFormState {
-    result:boolean
     error:string
     valueError:{
         phoneNumber:string
